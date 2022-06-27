@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AspDotNetMvcChallengeChat.Models
 {
-    public partial class aspnetAspDotNetMvcChallengeChatE8A8BE4F157C479D98FB972362E71B71Context : DbContext
+    public partial class AspDotNetMvcChallengeChatDBContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public aspnetAspDotNetMvcChallengeChatE8A8BE4F157C479D98FB972362E71B71Context()
+        public AspDotNetMvcChallengeChatDBContext()
         {
         }
 
-        public aspnetAspDotNetMvcChallengeChatE8A8BE4F157C479D98FB972362E71B71Context(DbContextOptions<aspnetAspDotNetMvcChallengeChatE8A8BE4F157C479D98FB972362E71B71Context> options)
+        public AspDotNetMvcChallengeChatDBContext(DbContextOptions<AspDotNetMvcChallengeChatDBContext> options)
             : base(options)
         {
         }
@@ -25,14 +25,6 @@ namespace AspDotNetMvcChallengeChat.Models
         public virtual DbSet<ChatMessage> ChatMessages { get; set; } = null!;
         public virtual DbSet<ChatRoom> ChatRooms { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=aspnet-AspDotNetMvcChallengeChat-E8A8BE4F-157C-479D-98FB-972362E71B71;Integrated Security=True");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
