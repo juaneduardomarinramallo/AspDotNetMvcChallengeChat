@@ -1,0 +1,42 @@
+﻿@model AspDotNetMvcChallengeChat.Models.ChatMessage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@if(User.Identity!.IsAuthenticated){
+    <h1>Create</h1>
+    <h4>ChatMessage</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ChatRoomId" class="control-label">ChatRoom</label>
+                    <select asp-for="ChatRoomId" class ="form-control" asp-items="ViewBag.ChatRoomId"></select>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <input asp-for="Message" class="form-control" />
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>            
+        </div>
+        <label class="col-md-6" style="border:solid"/>
+    </div>
+}
+else{
+    <h4>Please Sign in to enter the Chat</h4>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

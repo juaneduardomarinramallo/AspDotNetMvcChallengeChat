@@ -7,12 +7,14 @@ namespace AspDotNetMvcChallengeChat.Models
     {
         public ChatRoom()
         {
+            AspNetUsers = new HashSet<AspNetUser>();
             ChatMessages = new HashSet<ChatMessage>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; } = null!;
 
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
         public virtual ICollection<ChatMessage> ChatMessages { get; set; }
     }
 }
